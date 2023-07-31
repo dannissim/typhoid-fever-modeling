@@ -1,5 +1,5 @@
-import numpy as np
 import matplotlib.pyplot as plt
+import numpy as np
 
 # Real-life data (number of infectious individuals per community over time)
 real_data = np.array([[10, 15, 20, 25, 20, 15, 10, 5], [5, 10, 15, 20, 25, 20, 15, 10],
