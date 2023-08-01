@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import streamlit as st
 
-from src.parameters import Parameters
+from .parameters import Parameters
 
 
 def sir_model(parameters: Parameters):

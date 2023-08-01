@@ -2,8 +2,8 @@ import pathlib
 
 import streamlit as st
 
-from src import sir
-from src.parameters import Parameters
+from . import sir
+from .parameters import Parameters
 
 DEFAULT_PARAMETERS = Parameters(initial_infected=10,
                                 initial_susceptible=10000,
