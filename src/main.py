@@ -23,7 +23,6 @@ MARKDOWN_FILE_PATH_3 = pathlib.Path('src/static/typhoid3.md')
 MARKDOWN_FILE_PATH_4 = pathlib.Path('src/static/typhoid4.md')
 MARKDOWN_FILE_PATH_5 = pathlib.Path('src/static/typhoid5.md')
 MARKDOWN_FILE_PATH_6 = pathlib.Path('src/static/typhoid6.md')
-# MARKDOWN_FILE_PATH_7 = pathlib.Path('src/static/typhoid7.md')
 
 
 def parameters_inputs() -> Parameters:
@@ -45,6 +44,12 @@ def parameters_inputs() -> Parameters:
                                       10**5,
                                       value=DEFAULT_PARAMETERS.initial_recovered,
                                       step=1000)
+        relative_transmission_rate_of_chronic = st.slider(
+            'Relative Transmission Rate of Chronic Carriers',
+            0.0,
+            1.0,
+            value=DEFAULT_PARAMETERS.chronic_rate,
+            step=0.01)
         sanitation_improvement_rate = st.slider(
             'λ Sanitation Improvement Rate',
             0.0,
@@ -52,12 +57,6 @@ def parameters_inputs() -> Parameters:
             value=DEFAULT_PARAMETERS.sanitation_improvement_rate,
             step=0.001,
             format='%f')
-        relative_transmission_rate_of_chronic = st.slider(
-            'Relative Transmission Rate of Chronic Carriers',
-            0.0,
-            1.0,
-            value=DEFAULT_PARAMETERS.chronic_rate,
-            step=0.01)
 
     with col2:
         transmission_rate = st.slider('β Transmission Rate',
