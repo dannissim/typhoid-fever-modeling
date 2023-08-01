@@ -69,28 +69,28 @@ def parameters_inputs() -> Parameters:
 
 def background():
     st.markdown(MARKDOWN_FILE_PATH_1.read_text(encoding='utf-8'), unsafe_allow_html=True)
-    st.image('./static/map1.png')
-    st.image('./static/map2.png', caption='Maps of global outbreaks')
+    st.image('src/static/map1.png')
+    st.image('src/static/map2.png', caption='Maps of global outbreaks')
     st.markdown(MARKDOWN_FILE_PATH_2.read_text(encoding='utf-8'), unsafe_allow_html=True)
-    st.image('./static/graph1.png', caption='Open defecation levels in India over time')
+    st.image('src/static/graph1.png', caption='Open defecation levels in India over time')
     st.markdown(MARKDOWN_FILE_PATH_3.read_text(encoding='utf-8'), unsafe_allow_html=True)
     col1, col2 = st.columns(2)
     with col1:
         st.image(
-            './static/gram_vikas1.png',
+            'src/static/gram_vikas1.png',
             caption='Laxmi, in the yellow and pink dress with other trainees in the mason training.'
         )
     with col2:
-        st.image('./static/gram_vikas2.png',
+        st.image('src/static/gram_vikas2.png',
                  caption='A local woman enjoying newly available running water.')
     st.image(
-        './static/gram_vikas3.png',
+        'src/static/gram_vikas3.png',
         caption='A community meeting in progress in Satapatia village, Nayagarh district, Odisha')
     st.markdown(MARKDOWN_FILE_PATH_4.read_text(encoding='utf-8'), unsafe_allow_html=True)
     col1, col2 = st.columns(2)
     with col1:
         st.image(
-            './static/model_graph1.png',
+            'src/static/model_graph1.png',
             caption=
             '(Top) Weekly incidence of observed (blue line) and model-predicted (thick red line)'
             ' typhoid inpatients at Christian Medical College hospital in Vellore, India. '
@@ -99,7 +99,8 @@ def background():
             'equal to the model-predicted incidence.\n(Bottom) Age distribution of observed (blue) '
             'and model-predicted (red) typhoid cases.')
     with col2:
-        st.image('./static/model_graph2.png', caption='A diagram of the paper\'s model structure.')
+        st.image('src/static/model_graph2.png',
+                 caption='A diagram of the paper\'s model structure.')
     st.markdown(MARKDOWN_FILE_PATH_5.read_text(encoding='utf-8'), unsafe_allow_html=True)
 
 
