@@ -1,7 +1,9 @@
+import sys
 import pathlib
 
 import streamlit as st
 
+sys.path.append(str(pathlib.Path(__file__).resolve().parents[1]))
 from src import sir
 from src.parameters import Parameters
 
