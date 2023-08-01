@@ -1,5 +1,5 @@
-import sys
 import pathlib
+import sys
 
 import streamlit as st
 
@@ -14,13 +14,13 @@ DEFAULT_PARAMETERS = Parameters(initial_infected=10,
                                 recovery_rate=0.1,
                                 days_simulation=150)
 
-MARKDOWN_FILE_PATH_1 = pathlib.Path('static/typhoid1.md')
-MARKDOWN_FILE_PATH_2 = pathlib.Path('static/typhoid2.md')
-MARKDOWN_FILE_PATH_3 = pathlib.Path('static/typhoid3.md')
-MARKDOWN_FILE_PATH_4 = pathlib.Path('static/typhoid4.md')
-MARKDOWN_FILE_PATH_5 = pathlib.Path('static/typhoid5.md')
-MARKDOWN_FILE_PATH_6 = pathlib.Path('static/typhoid6.md')
-MARKDOWN_FILE_PATH_7 = pathlib.Path('static/typhoid7.md')
+MARKDOWN_FILE_PATH_1 = pathlib.Path('src/static/typhoid1.md')
+MARKDOWN_FILE_PATH_2 = pathlib.Path('src/static/typhoid2.md')
+MARKDOWN_FILE_PATH_3 = pathlib.Path('src/static/typhoid3.md')
+MARKDOWN_FILE_PATH_4 = pathlib.Path('src/static/typhoid4.md')
+MARKDOWN_FILE_PATH_5 = pathlib.Path('src/static/typhoid5.md')
+MARKDOWN_FILE_PATH_6 = pathlib.Path('src/static/typhoid6.md')
+MARKDOWN_FILE_PATH_7 = pathlib.Path('src/static/typhoid7.md')
 
 
 def parameters_inputs() -> Parameters:
