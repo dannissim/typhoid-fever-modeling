@@ -7,4 +7,7 @@ class Parameters(pydantic.BaseModel):
     initial_recovered: int
     transmission_rate: float
     recovery_rate: float
-    days_simulation: int
+    weeks_simulation: int
+    chronic_rate: float
+    sanitation_improvement_rate: float
+    relative_transmission_rate_of_chronic: float

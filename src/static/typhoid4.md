@@ -18,5 +18,3 @@ Yale, Harvard, and Oxford University, and published in the journal, PLOS Neglect
 in 2014, models transmission dynamics of Typhoid in Vellore, India, during the years 2000 - 2012.
 The paper concludes that it is unlikely that Typhoid can be eliminated through vaccination alone, 
 and that the effects of vaccination depend strongly on the role of chronic carriers in transmission.
-
- 

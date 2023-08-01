@@ -10,9 +10,12 @@ from src.parameters import Parameters
 DEFAULT_PARAMETERS = Parameters(initial_infected=10,
                                 initial_susceptible=10000,
                                 initial_recovered=0,
-                                transmission_rate=0.3,
-                                recovery_rate=0.1,
-                                days_simulation=150)
+                                transmission_rate=0.63,
+                                recovery_rate=0.25,
+                                weeks_simulation=50,
+                                chronic_rate=0.05,
+                                sanitation_improvement_rate=0.01,
+                                relative_transmission_rate_of_chronic=0.01)
 
 MARKDOWN_FILE_PATH_1 = pathlib.Path('src/static/typhoid1.md')
 MARKDOWN_FILE_PATH_2 = pathlib.Path('src/static/typhoid2.md')
@@ -20,7 +23,7 @@ MARKDOWN_FILE_PATH_3 = pathlib.Path('src/static/typhoid3.md')
 MARKDOWN_FILE_PATH_4 = pathlib.Path('src/static/typhoid4.md')
 MARKDOWN_FILE_PATH_5 = pathlib.Path('src/static/typhoid5.md')
 MARKDOWN_FILE_PATH_6 = pathlib.Path('src/static/typhoid6.md')
-MARKDOWN_FILE_PATH_7 = pathlib.Path('src/static/typhoid7.md')
+# MARKDOWN_FILE_PATH_7 = pathlib.Path('src/static/typhoid7.md')
 
 
 def parameters_inputs() -> Parameters:
@@ -28,43 +31,65 @@ def parameters_inputs() -> Parameters:
     with col1:
         initial_susceptible = st.slider('S Initial Susceptible',
                                         1,
-                                        10**6,
+                                        10**5,
                                         value=DEFAULT_PARAMETERS.initial_susceptible,
                                         step=1000)
 
         initial_infected = st.slider('I Initial Infected',
                                      0,
-                                     1000,
+                                     100,
                                      value=DEFAULT_PARAMETERS.initial_infected,
                                      step=1)
         initial_recovered = st.slider('R Initial Recovered',
                                       0,
-                                      10**6,
+                                      10**5,
                                       value=DEFAULT_PARAMETERS.initial_recovered,
                                       step=1000)
+        sanitation_improvement_rate = st.slider(
+            'λ Sanitation Improvement Rate',
+            0.0,
+            0.1,
+            value=DEFAULT_PARAMETERS.sanitation_improvement_rate,
+            step=0.001,
+            format='%f')
+        relative_transmission_rate_of_chronic = st.slider(
+            'Relative Transmission Rate of Chronic Carriers',
+            0.0,
+            1.0,
+            value=DEFAULT_PARAMETERS.chronic_rate,
+            step=0.01)
+
     with col2:
-        tranmission_rate = st.slider('β Transmission Rate',
-                                     0.0,
-                                     1.0,
-                                     value=DEFAULT_PARAMETERS.transmission_rate,
-                                     step=0.01)
+        transmission_rate = st.slider('β Transmission Rate',
+                                      0.0,
+                                      3.0,
+                                      value=DEFAULT_PARAMETERS.transmission_rate,
+                                      step=0.01)
         recovery_rate = st.slider('γ Recovery Rate',
                                   0.0,
                                   1.0,
                                   value=DEFAULT_PARAMETERS.recovery_rate,
                                   step=0.01)
-        days_simulation = st.slider('Number of Days to Simulate',
-                                    50,
-                                    4000,
-                                    value=DEFAULT_PARAMETERS.days_simulation,
-                                    step=50)
+        weeks_simulation = st.slider('Number of Weeks to Simulate',
+                                     10,
+                                     200,
+                                     value=DEFAULT_PARAMETERS.weeks_simulation,
+                                     step=5)
+        chronic_rate = st.slider('θ New Chronic Carriers Rate',
+                                 0.0,
+                                 1.0,
+                                 value=DEFAULT_PARAMETERS.chronic_rate,
+                                 step=0.01)
 
     return Parameters(initial_infected=initial_infected,
                       initial_susceptible=initial_susceptible,
                       initial_recovered=initial_recovered,
-                      transmission_rate=tranmission_rate,
+                      transmission_rate=transmission_rate,
                       recovery_rate=recovery_rate,
-                      days_simulation=days_simulation)
+                      weeks_simulation=weeks_simulation,
+                      chronic_rate=chronic_rate,
+                      sanitation_improvement_rate=sanitation_improvement_rate,
+                      relative_transmission_rate_of_chronic=relative_transmission_rate_of_chronic)
 
 
 def background():
@@ -115,11 +140,16 @@ def title():
         unsafe_allow_html=True)
 
 
+def conclusion():
+    st.markdown(MARKDOWN_FILE_PATH_6.read_text(encoding='utf-8'), unsafe_allow_html=True)
+
+
 def main():
     title()
     background()
     parameters = parameters_inputs()
     sir.plot(parameters)
+    conclusion()
 
 
 if __name__ == '__main__':
